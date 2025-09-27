@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <title>Sonido Unicornio - Tarimas</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+    <main>
+        <section>
+            <div class="header-vista">
+                <div>
+                    <p class="brand-subtitle">SONIDO UNICORNIO</p>
+                    <h1>TARIMAS</h1>
+                    <p class="subtitulo-vista">Estructuras seguras y modulares para escenarios, pasarelas y plataformas</p>
+                </div>
+                <a href="sonido.html" class="btn-navegacion-vista">&larr; Ver Sonido</a>
+            </div>
+
+            <div class="catalogo-grid">
+                <!-- Las tarjetas de producto se generarán aquí por JavaScript -->
+            </div>
+        </section>
+    </main>
+    <div id="carrito-burbuja" class="btn-carrito"><span>Carrito</span><span id="carrito-contador">0</span></div>
+    <!-- Carrito y Modales -->
+    <div id="modal-detalles" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <div class="modal-detalles-layout">
+                <img id="modal-img" src="" alt="Producto">
+                <div>
+                    <h3 id="modal-titulo"></h3>
+                    <p id="modal-descripcion"></p>
+                    <p id="modal-precio"></p>
+                    <div id="modal-opciones"></div> <!-- Contenedor para opciones de tarima -->
+                    <button id="btn-anadir-carrito">Añadir al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal-carrito" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <h2>Mi Carrito</h2>
+            <div id="carrito-items" class="custom-scrollbar"><p>Tu carrito está vacío.</p></div>
+            <hr>
+            <div class="opciones-pedido">
+                <div class="campo-pedido">
+                    <label for="fecha-evento">Fecha del Evento:</label>
+                    <input type="date" id="fecha-evento" name="fecha-evento">
+                </div>
+                <div class="campo-pedido">
+                    <label for="hora-evento">Hora del Evento:</label>
+                    <input type="time" id="hora-evento" name="hora-evento">
+                </div>
+            </div>
+            <label>Ubicación del Evento (arrastra el marcador):</label>
+            <div id="map"></div>
+            <div class="total-container">
+                <strong>Total Estimado: <span id="carrito-total">0.00 Bs.</span></strong>
+            </div>
+            <button id="btn-finalizar-pedido" class="btn-detalles btn-finalizar-pedido" style="width: 100%; margin-top: 1rem;">Finalizar Pedido por WhatsApp</button>
+        </div>
+    </div>
+
+    <!-- Modal de Alerta Personalizado -->
+    <div id="modal-alerta" class="modal">
+        <div class="modal-contenido alerta">
+            <p id="alerta-mensaje"></p>
+            <button id="btn-cerrar-alerta" class="btn-detalles">Entendido</button>
+        </div>
+    </div>
+
+    <script src="scripts/productos-sonido.js"></script>
+    <script src="scripts/productos-tarimas.js"></script>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

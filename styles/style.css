@@ -1,0 +1,689 @@
+/* Estilos Generales - TEMA NEON */
+:root {
+    --color-fondo: #0D0221; /* Negro azulado */
+    --color-superficie: #1D1135; /* Morado oscuro */
+    --color-primario: #F918E8; /* Rosa Neón */
+    --color-secundario: #00F5D4; /* Cian Neón */
+    --color-acento: #39FF14; /* Verde Neón */
+    --color-texto: #FFFFFF;
+}
+
+body {
+    font-family: 'Consolas', 'Courier New', monospace;
+    margin: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    text-shadow: 0 0 2px var(--color-secundario);
+    position: relative; /* Necesario para el overlay */
+}
+
+/* Overlay de Rejilla Digital (Cyber Grid) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(var(--color-secundario) 1px, transparent 1px), linear-gradient(90deg, var(--color-secundario) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: -1; /* Asegura que esté en el fondo */
+}
+/* Overlay de Scanlines */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(0deg, rgba(0, 245, 212, 0.1) 0px, rgba(0, 245, 212, 0.1) 1px, transparent 1px, transparent 3px);
+    pointer-events: none; /* Para que no interfiera con los clics */
+    z-index: -1; /* Asegura que esté en el fondo */
+}
+
+/* Header y Navegación */
+header {
+    background-color: transparent;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--color-primario);
+    box-shadow: 0 2px 15px -5px var(--color-primario);
+}
+
+header h1 a {
+    font-size: 2rem;
+    color: var(--color-texto);
+    text-decoration: none;
+    text-shadow: 0 0 5px var(--color-primario), 0 0 10px var(--color-primario);
+}
+
+.nav-link {
+    color: var(--color-texto);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--color-primario);
+    text-shadow: 0 0 5px var(--color-primario);
+    border-color: var(--color-primario);
+}
+
+nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Vistas y Contenido Principal */
+main { 
+    padding: 4rem 2rem 6rem 2rem; /* Aumentamos el padding superior y el inferior */
+}
+
+.vista.activa { animation: fadeIn 0.5s; } /* Animación para la página de inicio */
+
+.header-vista {
+    display: flex;
+    flex-direction: column; /* Por defecto para móviles */
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    border: 1px solid rgba(0, 245, 212, 0.3);
+    border-radius: 10px;
+    background-color: rgba(29, 17, 53, 0.5); /* Color de superficie semi-transparente */
+    position: relative;
+    overflow: hidden; /* Para contener el efecto de neón */
+}
+
+/* Efecto de luz de neón animada en el borde superior */
+.header-vista::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-secundario));
+    animation: neon-scan 4s linear infinite;
+}
+
+.header-vista .btn-navegacion-vista {
+    margin-top: 1.5rem; /* Espacio por defecto para móviles */
+}
+
+.header-vista h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: bold;
+    color: var(--color-texto);
+    text-shadow: 0 0 5px var(--color-secundario), 0 0 15px var(--color-secundario), 0 0 25px var(--color-secundario);
+    margin: 0;
+    padding: 0;
+}
+
+.brand-subtitle {
+    color: var(--color-primario);
+    font-size: 1rem;
+    text-shadow: 0 0 5px var(--color-primario);
+    margin-bottom: 0.5rem;
+}
+.subtitulo-vista {
+    color: var(--color-texto);
+    opacity: 0.8;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    text-shadow: none;
+}
+
+/* Botones */
+.btn-navegacion-vista {
+    border-color: var(--color-secundario);
+    color: var(--color-secundario);
+}
+.btn-navegacion-vista:hover { background-color: var(--color-secundario); color: var(--color-fondo); box-shadow: 0 0 15px var(--color-secundario); }
+
+.btn-navegacion, .btn-navegacion-vista, .btn-detalles, #btn-anadir-carrito {
+    background: transparent;
+    color: var(--color-primario);
+    border: 1px solid var(--color-primario);
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 3px var(--color-primario);
+    text-decoration: none; /* Para los <a> que son botones */
+    display: inline-block; /* Para los <a> que son botones */
+}
+
+.btn-navegacion:hover, .btn-navegacion-vista:hover, .btn-detalles:hover, #btn-anadir-carrito:hover {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    box-shadow: 0 0 15px var(--color-primario);
+    text-shadow: none;
+}
+
+#btn-anadir-carrito { color: var(--color-acento); border-color: var(--color-acento); }
+#btn-anadir-carrito:hover { background-color: var(--color-acento); color: var(--color-fondo); box-shadow: 0 0 15px var(--color-acento); }
+
+.btn-finalizar-pedido { background: transparent; color: var(--color-acento); border-color: var(--color-acento); }
+.btn-finalizar-pedido:hover { background-color: var(--color-acento); color: var(--color-fondo); box-shadow: 0 0 15px var(--color-acento); }
+
+/* Catálogo */
+.catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.card-producto {
+    background-color: transparent; /* Fondo eliminado */
+    overflow: hidden;
+    border: 1px solid rgba(0, 245, 212, 0.3); /* Borde más sutil */
+    /* Eliminamos la sombra estática y la reemplazamos por una animación */
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Necesario para los pseudo-elementos de las esquinas */
+    opacity: 0; /* Oculto por defecto para la animación de entrada */
+}
+
+/* --- Estilos de esquinas HUD para las tarjetas --- */
+.card-producto::before, .card-producto::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: var(--color-secundario);
+    border-style: solid;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none; /* SOLUCIÓN: Permite hacer clic a través de esta capa */
+}
+.card-producto::before {
+    top: 10px;
+    left: 10px;
+    border-width: 2px 0 0 2px;
+}
+.card-producto::after {
+    bottom: 10px;
+    right: 10px;
+    border-width: 0 2px 2px 0;
+}
+.card-producto:hover::before, .card-producto:hover::after {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    border-color: var(--color-primario);
+}
+
+/* Clase para la animación de entrada */
+.card-producto.visible {
+    animation: card-enter 0.5s forwards ease-out;
+}
+
+.card-producto:hover { 
+    transform: translateY(-5px) scale(1.02); 
+}
+.card-producto img { width: 100%; height: 200px; object-fit: cover; opacity: 0.8; transition: all 0.3s ease; }
+.card-producto:hover img { opacity: 1; transform: scale(1.05); } /* Efecto de zoom y opacidad en la imagen */
+.card-producto h3 { padding: 0 1rem; margin-top: 1rem; color: var(--color-primario); }
+.card-producto p { padding: 0 1rem; flex-grow: 1; color: var(--color-texto); }
+.btn-detalles { width: calc(100% - 2rem); margin: 1rem; }
+
+/* Contenedor para acciones sobre el catálogo (como el botón del carrito) */
+/* .acciones-catalogo ya no es necesario, se puede eliminar */
+
+/* Carrito Flotante */
+.btn-carrito { /* Renombrado de #carrito-burbuja a una clase */
+    position: fixed; /* Vuelve a ser fijo en la pantalla */
+    z-index: 999;
+    top: 10rem; /* Lo bajamos para que no choque con el header */
+    right: 2rem;
+
+    width: auto; /* Ancho automático */
+    height: auto;
+    padding: 0.5rem 1rem; /* Padding para el texto */
+    background-color: var(--color-primario);
+    border-radius: 5px; /* Bordes rectangulares redondeados */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; /* Espacio entre "Carrito" y el número */
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--color-primario);
+    transition: transform 0.3s ease;
+    font-size: 1rem;
+    color: var(--color-fondo);
+    text-shadow: none;
+    font-weight: bold;
+}
+
+.btn-carrito:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px var(--color-primario);
+}
+
+/* El contador dentro del botón del carrito */
+#carrito-contador {
+    background-color: var(--color-fondo);
+    color: var(--color-primario);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+/* Modales */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13, 2, 33, 0.8);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+.modal-contenido {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-primario);
+    box-shadow: 0 0 25px var(--color-primario);
+    animation: modal-anim 0.3s ease-out;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    padding: 2rem;
+}
+
+/* Estilos específicos para el modal de alerta */
+.modal-contenido.alerta {
+    max-width: 450px;
+    text-align: center;
+}
+
+#alerta-mensaje {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* Estructura del modal de detalles */
+.modal-detalles-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Por defecto una columna para móviles */
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.modal-detalles-layout img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid var(--color-secundario);
+}
+
+.cerrar-modal { 
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--color-primario); 
+    text-shadow: 0 0 5px var(--color-primario); 
+}
+#modal-precio { color: var(--color-secundario); font-weight: bold; }
+#carrito-total { color: var(--color-secundario); }
+#modal-carrito hr {
+    border: none;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, var(--color-primario), transparent);
+    margin: 1rem 0;
+}
+#modal-carrito .total-container {
+    text-align: right;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+.carrito-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed rgba(249, 24, 232, 0.3);
+}
+.carrito-item:last-child {
+    border-bottom: none;
+}
+
+.carrito-item-nombre {
+    flex-grow: 1;
+    padding-right: 1rem;
+}
+
+.carrito-item-acciones {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.btn-info-item {
+    background: none;
+    border: 1px solid var(--color-secundario);
+    color: var(--color-secundario);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    font-style: italic;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+.btn-info-item:hover {
+    background-color: var(--color-secundario);
+    color: var(--color-fondo);
+    box-shadow: 0 0 10px var(--color-secundario);
+}
+
+.custom-scrollbar {
+    max-height: 150px; /* Altura máxima para la lista de items */
+    overflow-y: auto; /* Habilitar scroll vertical */
+    padding-right: 10px; /* Espacio para la barra de scroll */
+}
+/* Estilo de la barra de scroll */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--color-superficie);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--color-primario);
+    border-radius: 10px;
+    border: 2px solid var(--color-superficie);
+}
+
+.opciones-pedido {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+.campo-pedido {
+    flex: 1;
+}
+.campo-pedido label, #modal-carrito > label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-secundario);
+    text-shadow: none;
+}
+.campo-pedido input {
+    width: 100%;
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-secundario);
+    color: var(--color-texto);
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+#map {
+    height: 200px; /* Altura del mapa */
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+.btn-quitar-item {
+    background: none;
+    border: none;
+    color: var(--color-primario);
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+.btn-quitar-item:hover {
+    color: #ff5555; /* Un rojo para indicar peligro/eliminar */
+}
+
+/* Estilos para opciones en el modal (ej. altura de tarima) */
+#modal-opciones {
+    margin: 1.5rem 0;
+}
+#modal-opciones h4 {
+    color: var(--color-secundario);
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 3px var(--color-secundario);
+}
+.opciones-wrapper {
+    display: flex;
+    gap: 1rem;
+}
+.opcion-radio input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+.opcion-radio label {
+    display: inline-block;
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    border: 1px solid var(--color-secundario);
+    border-radius: 5px;
+    color: var(--color-secundario);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-shadow: none;
+}
+.opcion-radio label:hover {
+    background-color: rgba(0, 245, 212, 0.2);
+    box-shadow: 0 0 10px -4px var(--color-secundario);
+}
+.opcion-radio input[type="radio"]:checked + label {
+    background-color: var(--color-secundario);
+    color: var(--color-fondo);
+    font-weight: bold;
+    box-shadow: 0 0 15px -4px var(--color-secundario);
+}
+
+.lista-componentes {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.lista-componentes li {
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    position: relative;
+    text-shadow: none;
+}
+.lista-componentes li::before {
+    content: '»';
+    position: absolute;
+    left: 0;
+    color: var(--color-primario);
+    text-shadow: 0 0 5px var(--color-primario);
+}
+
+@keyframes modal-anim {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Animación de "aura" para las tarjetas */
+@keyframes aura-anim {
+    from { box-shadow: 0 0 10px -5px var(--color-secundario); }
+    to { box-shadow: 0 0 20px -8px var(--color-secundario); }
+}
+/* --- ESTILOS PÁGINA DE INICIO (SPLASH) --- */
+
+@keyframes card-enter {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.splash-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    background-image: linear-gradient(rgba(13, 2, 33, 0.9), rgba(13, 2, 33, 0.9)), repeating-linear-gradient(0deg, rgba(0, 245, 212, 0.05) 0px, rgba(0, 245, 212, 0.05) 1px, transparent 1px, transparent 3px);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: var(--color-secundario);
+    text-shadow: 0 0 5px var(--color-secundario);
+    margin-top: 0;
+    margin-bottom: 3rem;
+}
+
+.splash-container .btn-navegacion {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    margin: 0 1rem;
+}
+
+/* Efecto Glitch */
+.glitch {
+    font-size: clamp(2.5rem, 8vw, 4rem); /* Tamaño ajustado para los headers */
+    font-weight: bold;
+    position: relative;
+    color: var(--color-texto);
+    text-shadow: 0 0 5px var(--color-secundario); /* Cambiado a secundario para contraste */
+    margin-bottom: 1rem;
+    /* animation: glitch-main 5s infinite linear; */ /* Animación desactivada */
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-fondo);
+    /* En el header-vista, el fondo es semi-transparente, así que lo replicamos */
+    .header-vista & {
+        background: rgba(29, 17, 53, 0.5);
+    }
+    overflow: hidden;
+}
+
+.glitch::before {
+    left: 3px;
+    text-shadow: -3px 0 var(--color-primario);
+    animation: glitch-anim-1 5s infinite linear alternate-reverse; /* Más lento */
+}
+
+.glitch::after {
+    left: -3px;
+    text-shadow: -3px 0 var(--color-secundario);
+    animation: glitch-anim-2 4s infinite linear alternate-reverse; /* Más lento */
+}
+
+@keyframes glitch-main {
+    0% { transform: skewX(0deg); }
+    5% { transform: skewX(3deg); }
+    10% { transform: skewX(-3deg); }
+    15% { transform: skewX(0deg); }
+    100% { transform: skewX(0deg); }
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip-path: inset(15% 0 86% 0); }
+    10% { clip-path: inset(46% 0 45% 0); }
+    20% { clip-path: inset(9% 0 34% 0); }
+    30% { clip-path: inset(58% 0 4% 0); }
+    40% { clip-path: inset(32% 0 63% 0); }
+    50% { clip-path: inset(1% 0 90% 0); }
+    60% { clip-path: inset(82% 0 3% 0); }
+    70% { clip-path: inset(42% 0 41% 0); }
+    80% { clip-path: inset(2% 0 78% 0); }
+    90% { clip-path: inset(99% 0 1% 0); }
+    100% { clip-path: inset(78% 0 15% 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip-path: inset(82% 0 3% 0); }
+    10% { clip-path: inset(12% 0 83% 0); }
+    20% { clip-path: inset(48% 0 5% 0); }
+    30% { clip-path: inset(22% 0 55% 0); }
+    40% { clip-path: inset(99% 0 1% 0); }
+    50% { clip-path: inset(68% 0 13% 0); }
+    60% { clip-path: inset(42% 0 33% 0); }
+    70% { clip-path: inset(4% 0 95% 0); }
+    80% { clip-path: inset(82% 0 1% 0); }
+    90% { clip-path: inset(38% 0 33% 0); }
+    100% { clip-path: inset(46% 0 45% 0); }
+}
+
+/* Media Query para responsividad de la cuadrícula */
+@media (max-width: 900px) {
+    .catalogo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .catalogo-grid {
+        grid-template-columns: 1fr;
+    }
+    .header-vista {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .header-vista {
+        flex-direction: row; /* Horizontal en pantallas más grandes */
+        justify-content: space-between;
+        text-align: left;
+    }
+    .header-vista .btn-navegacion-vista {
+        margin-top: 0; /* Quitar margen superior en layout horizontal */
+        flex-shrink: 0; /* Evita que el botón se encoja */
+    }
+}
+
+@media (min-width: 600px) {
+    .modal-detalles-layout {
+        grid-template-columns: 1fr 1.5fr; /* Dos columnas en pantallas más grandes */
+    }
+}
+
+@keyframes neon-scan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
