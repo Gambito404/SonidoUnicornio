@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const carritoTotalEl = document.getElementById('carrito-total');
     const btnFinalizarPedido = document.getElementById('btn-finalizar-pedido');
     const fechaEventoInput = document.getElementById('fecha-evento');
+    const horaEventoInput = document.getElementById('hora-evento');
     const alertaMensaje = document.getElementById('alerta-mensaje');
     const btnCerrarAlerta = document.getElementById('btn-cerrar-alerta');
 
@@ -51,15 +52,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- LÓGICA DE FECHA ---
-    // Establecer la fecha mínima para el input de fecha al día actual
-    if (fechaEventoInput) {
-        const hoy = new Date();
-        const anio = hoy.getFullYear();
-        const mes = String(hoy.getMonth() + 1).padStart(2, '0'); // Los meses son 0-indexados
-        const dia = String(hoy.getDate()).padStart(2, '0');
-        fechaEventoInput.min = `${anio}-${mes}-${dia}`;
-    }
+    function configurarFechaHoraActual() {
+        if (!fechaEventoInput || !horaEventoInput) return;
 
+        const ahora = new Date();
+        // Ajuste para la zona horaria local para que la fecha y hora sean correctas
+        ahora.setMinutes(ahora.getMinutes() - ahora.getTimezoneOffset());
+
+        const fechaActual = ahora.toISOString().split('T')[0];
+        const horaActual = ahora.toISOString().split('T')[1].substring(0, 5);
+
+        // Establecer el valor y el mínimo inicial
+        fechaEventoInput.min = fechaActual;
+        fechaEventoInput.value = fechaActual;
+        horaEventoInput.min = horaActual;
+        horaEventoInput.value = horaActual;
+
+        // Función para manejar el cambio de fecha
+        const handleDateChange = () => {
+            const fechaSeleccionada = fechaEventoInput.value;
+            
+            if (fechaSeleccionada === fechaActual) {
+                // Si se selecciona hoy, la hora mínima es la actual
+                horaEventoInput.min = horaActual;
+                // Si la hora seleccionada es anterior a la mínima, la reseteamos
+                if (horaEventoInput.value < horaActual) {
+                    horaEventoInput.value = horaActual;
+                }
+            } else {
+                // Si es un día futuro, no hay hora mínima
+                horaEventoInput.min = '';
+            }
+        };
+
+        // Asignar el listener para reaccionar a los cambios
+        fechaEventoInput.addEventListener('change', handleDateChange);
+    }
     // --- LÓGICA DE RENDERIZADO DINÁMICO DE PRODUCTOS ---
     function renderizarProductos() {
         const catalogoGrid = document.querySelector('.catalogo-grid');
@@ -281,6 +309,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if(btnAnadirCarrito) btnAnadirCarrito.addEventListener('click', agregarAlCarrito);
     if(carritoBurbuja) carritoBurbuja.addEventListener('click', () => {
         actualizarUICarrito();
+        // Configurar la fecha y hora al momento actual cada vez que se abre el carrito
+        configurarFechaHoraActual();
         abrirModal(modalCarrito);
         // Inicializar o refrescar el mapa cada vez que se abre el modal del carrito
         inicializarMapa();

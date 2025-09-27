@@ -241,12 +241,11 @@ main {
 
 /* Carrito Flotante */
 .btn-carrito { /* Renombrado de #carrito-burbuja a una clase */
-    position: fixed; /* Vuelve a ser fijo en la pantalla */
-    z-index: 999;
-    top: 10rem; /* Lo bajamos para que no choque con el header */
-    right: 2rem;
-
-    width: auto; /* Ancho automático */
+    /* Se elimina la posición fija para que esté en el flujo del documento */
+    margin-left: auto; /* Lo alinea a la derecha */
+    margin-bottom: 2rem; /* Le da espacio antes de las cards */
+    margin-right: 0; /* Aseguramos que no tenga margen derecho */
+    width: fit-content; /* Ancho basado en su contenido */
     height: auto;
     padding: 0.5rem 1rem; /* Padding para el texto */
     background-color: var(--color-primario);
