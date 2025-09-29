@@ -1,0 +1,82 @@
+
+/* Base */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Glow para títulos */
+h1, h2, .catalogo-title {
+  text-shadow:
+    0 0 10px rgba(139, 92, 246, 0.9),
+    0 0 20px rgba(236, 72, 153, 0.7),
+    0 0 30px rgba(59, 130, 246, 0.6);
+}
+
+/* Tarjetas del catálogo */
+.catalogo-card {
+  background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(236,72,153,0.1));
+  border: 1px solid rgba(139,92,246,0.4);
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.catalogo-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px rgba(236,72,153,0.7), 0 0 40px rgba(139,92,246,0.5);
+}
+
+/* Imagen */
+.catalogo-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+}
+
+/* Título */
+.catalogo-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #ec4899;
+}
+
+/* Descripción */
+.catalogo-desc {
+  color: #d1d5db;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Precio */
+.catalogo-price {
+  font-weight: 700;
+  color: #facc15;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* Botón */
+.catalogo-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 0 15px rgba(236,72,153,0.7), 0 0 25px rgba(139,92,246,0.5);
+  transition: all 0.3s ease;
+}
+.catalogo-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(236,72,153,0.9), 0 0 40px rgba(139,92,246,0.7);
+}
+
+/* Footer */
+footer {
+  background: rgba(0,0,0,0.4);
+  text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
