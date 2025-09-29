@@ -1,22 +1,156 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Sonido Unicornio</title>
-    <link rel="stylesheet" href="styles/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sonido Unicornio - Don Eddy García</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
+<body class="text-white">
 
-    <div class="splash-container">
-        <h1 class="glitch" data-text="SONIDO UNICORNIO">SONIDO UNICORNIO</h1>
-        <p class="tagline">Calidad de audio y estructuras legendarias para eventos inolvidables.</p>
-        <div class="navegacion-inicio">
-            <a href="sonido.html" class="btn-navegacion">ENTRAR: SONIDO</a>
-            <a href="tarimas.html" class="btn-navegacion">ENTRAR: TARIMAS</a>
-        </div>
+  <!-- Header -->
+  <header>
+    <div class="header-content max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
+      <div class="flex items-center gap-4">
+        <img src="images/logo.png" alt="Logo Sonido Unicornio" class="header-logo w-16 h-16 rounded-full">
+        <h1 class="header-title text-5xl md:text-6xl font-extrabold text-purple-400">SONIDO UNICORNIO</h1>
+      </div>
+    </div>
+  </header>
+<!-- Sección Don Eddy (después del título) -->
+<section class="eddy-section flex flex-col items-center mt-12 text-center">
+  <div class="eddy-container relative inline-block">
+    <div class="eddy-glow-1"></div>
+    <div class="eddy-glow-2"></div>
+    <div class="eddy-frame">
+      <img src="images/Eddy.png" alt="Don Eddy García" class="eddy-img">
+      <div class="eddy-shadow"></div>
+    </div>
+  </div>
+  <h2 class="eddy-name mt-4 text-3xl md:text-4xl font-bold text-purple-300">DON EDDY GARCÍA</h2>
+  <p class="text-gray-300 text-lg md:text-xl mt-2">Con más de 20 años de experiencia en sonido profesional</p>
+  
+  
+</section>
+
+  <!-- Carrusel -->
+  <section class="carousel-container mt-16">
+    <div class="carousel-slide fade">
+      <img src="images/carrusel/1.jpg" alt="Evento 1" class="carousel-img">
+      <div class="carousel-overlay"></div>
+      <div class="carousel-text">
+        <h2 class="text-3xl md:text-6xl">EVENTOS INOLVIDABLES</h2>
+        <p class="mt-4 text-lg md:text-2xl">Con la mejor calidad de sonido en Bolivia 🎶✨</p>
+      </div>
+    </div>
+    <div class="carousel-slide fade">
+      <img src="images/carrusel/2.jpg" alt="Evento 2" class="carousel-img">
+      <div class="carousel-overlay"></div>
+      <div class="carousel-text">
+        <h2 class="text-3xl md:text-6xl">ENERGÍA Y ESTILO</h2>
+        <p class="mt-4 text-lg md:text-2xl">Sonido Unicornio transforma tu fiesta 🔥</p>
+      </div>
+    </div>
+    <div class="carousel-slide fade">
+      <img src="images/carrusel/3.jpg" alt="Evento 3" class="carousel-img">
+      <div class="carousel-overlay"></div>
+      <div class="carousel-text">
+        <h2 class="text-3xl md:text-6xl">EL TOQUE ÚNICO</h2>
+        <p class="mt-4 text-lg md:text-2xl">Experiencias que nunca olvidarás ⚡</p>
+      </div>
     </div>
 
+    <!-- Controles del Carrusel -->
+    <button class="carousel-btn prev" onclick="plusSlides(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="carousel-btn next" onclick="plusSlides(1)"><i class="fas fa-chevron-right"></i></button>
+
+    <!-- Indicadores -->
+    <div class="carousel-indicators">
+      <div class="indicator active" data-slide="0"></div>
+      <div class="indicator" data-slide="1"></div>
+      <div class="indicator" data-slide="2"></div>
+    </div>
+  </section>
+
+  <!-- Botón Ver Catálogo -->
+  <div class="text-center my-12">
+    <a href="catalogo.html" class="catalogo-btn text-lg font-semibold">
+      VER CATÁLOGO <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <!-- Servicios -->
+  <section id="servicios" class="max-w-7xl mx-auto py-24 px-6">
+    <h2 class="services-title text-4xl font-bold text-purple-300 mb-12 text-center">NUESTROS SERVICIOS</h2>
+    <div class="grid md:grid-cols-3 gap-12 text-center">
+      <div class="card">
+        <div class="card-icon text-4xl mb-4"><i class="fas fa-volume-up text-purple-400"></i></div>
+        <h3 class="text-purple-300 mb-4">SONIDO PROFESIONAL</h3>
+        <p class="text-gray-300 text-lg">Equipos de última generación para todo tipo de eventos y celebraciones.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon text-4xl mb-4"><i class="fas fa-lightbulb text-yellow-400"></i></div>
+        <h3 class="text-purple-300 mb-4">ILUMINACIÓN</h3>
+        <p class="text-gray-300 text-lg">Luces espectaculares que acompañan el ritmo y ambientan cada ocasión.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon text-4xl mb-4"><i class="fas fa-star text-pink-400"></i></div>
+        <h3 class="text-purple-300 mb-4">ESCENARIOS</h3>
+        <p class="text-gray-300 text-lg">Montajes seguros, modernos y espectaculares para tu evento soñado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="text-center py-24 px-6">
+    <h2 class="contact-title text-purple-300 mb-6 text-4xl font-bold">¡RESERVA TU EVENTO!</h2>
+    <p class="text-gray-300 text-xl md:text-2xl mb-8 max-w-3xl mx-auto font-semibold">
+      Contáctanos y hagamos de tu fiesta algo único e inolvidable
+    </p>
+
+    <!-- Redes Sociales -->
+    <div class="flex justify-center gap-6 mb-8">
+      <a href="https://facebook.com/sonidounicornio" target="_blank" class="social-btn facebook text-2xl" title="@sonidounicornio"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/sonidounicornio" target="_blank" class="social-btn instagram text-2xl" title="@sonidounicornio"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@sonidounicornio" target="_blank" class="social-btn tiktok text-2xl" title="@sonidounicornio"><i class="fab fa-tiktok"></i></a>
+      <a href="https://wa.me/59177424842" target="_blank" class="social-btn whatsapp text-2xl" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 text-center">
+    <p class="text-lg mb-4">© 2025 Sonido Unicornio | Diseñado con pasión 💜</p>
+    <p class="text-gray-400 text-sm">Don Eddy García - El mejor sonido de Bolivia</p>
+  </footer>
+
+  <!-- Scripts Carrusel -->
+  <script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".carousel-slide");
+    const indicators = document.querySelectorAll(".indicator");
+
+    const showSlides = (n) => {
+      if (n >= slides.length) slideIndex = 0;
+      if (n < 0) slideIndex = slides.length - 1;
+
+      slides.forEach(s => s.style.display = "none");
+      indicators.forEach(i => i.classList.remove("active"));
+
+      slides[slideIndex].style.display = "block";
+      indicators[slideIndex].classList.add("active");
+    };
+
+    const nextSlide = () => { slideIndex++; showSlides(slideIndex); };
+    const plusSlides = (n) => { slideIndex += n; showSlides(slideIndex); };
+
+    setInterval(nextSlide, 5000);
+    showSlides(slideIndex);
+
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => { slideIndex = index; showSlides(slideIndex); });
+    });
+  </script>
 </body>
 </html>
