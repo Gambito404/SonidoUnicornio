@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo - Sonido Unicornio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/catalogo.css">
+</head>
+<body class="bg-gradient-to-b from-gray-900 via-purple-900 to-black text-white">
+
+  <!-- Header -->
+  <header class="py-6 px-6 bg-gradient-to-r from-purple-700 to-pink-500 shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white text-shadow-lg">CATÁLOGO SONIDO UNICORNIO</h1>
+      <a href="index.html" class="text-lg md:text-xl font-semibold text-white hover:underline">← Volver</a>
+    </div>
+  </header>
+
+  <!-- Sección de Productos -->
+  <section class="catalogo-section max-w-7xl mx-auto py-16 px-6">
+    <h2 class="text-4xl font-bold text-purple-300 mb-12 text-center text-shadow-lg">Nuestros Productos y Servicios</h2>
+
+    <div id="catalogo-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
+      <!-- Tarjetas generadas dinámicamente aquí -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 text-center text-gray-400">
+    <p>© 2025 Sonido Unicornio | Don Eddy García</p>
+  </footer>
+
+  <!-- Script para generar tarjetas dinámicamente -->
+  <script>
+    const productos = [
+      {
+        nombre: "Sonido Profesional",
+        descripcion: "Equipos de última generación para todo tipo de eventos y celebraciones.",
+        imagen: "images/catalogo/sonido1.jpg",
+        precio: 1200
+      },
+      {
+        nombre: "Iluminación",
+        descripcion: "Luces espectaculares que acompañan el ritmo y ambientan cada ocasión.",
+        imagen: "images/catalogo/luces1.jpg",
+        precio: 800
+      },
+      {
+        nombre: "Escenarios",
+        descripcion: "Montajes seguros, modernos y espectaculares para tu evento soñado.",
+        imagen: "images/catalogo/escenario1.jpg",
+        precio: 2000
+      },
+      {
+        nombre: "Efectos Especiales",
+        descripcion: "Máquinas de humo, confeti y efectos especiales que harán tu fiesta épica.",
+        imagen: "images/catalogo/extra1.jpg",
+        precio: 500
+      }
+    ];
+
+    const grid = document.getElementById('catalogo-grid');
+
+    productos.forEach(producto => {
+      const card = document.createElement('div');
+      card.className = 'catalogo-card';
+
+      card.innerHTML = `
+        <img src="${producto.imagen}" alt="${producto.nombre}" class="catalogo-img">
+        <h3 class="catalogo-title">${producto.nombre}</h3>
+        <p class="catalogo-desc">${producto.descripcion}</p>
+        <p class="catalogo-price">Bs ${producto.precio.toLocaleString()}</p>
+        <a href="https://wa.me/59171760926?text=Hola,%20quiero%20consultar%20sobre%20${encodeURIComponent(producto.nombre)}" 
+           class="catalogo-btn">Consultar <i class="fas fa-arrow-right ml-2"></i></a>
+      `;
+
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
