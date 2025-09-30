@@ -90,7 +90,7 @@ h1, h2, .services-title {
     0 0 30px rgba(236, 72, 153, 0.6);
 }
 
-/* ==== Imagen de Don Eddy recortada con glow ==== */
+/* ==== Imagen de Don Eddy con transparencia y glow ==== */
 .eddy-container {
   position: relative;
   display: inline-block;
@@ -99,16 +99,12 @@ h1, h2, .services-title {
 .eddy-img {
   width: 40vw;
   max-width: 250px;
-  object-fit: cover;
   position: relative;
   z-index: 10;
-  clip-path: polygon(
-    20% 0%, 80% 0%, 95% 20%, 100% 80%, 85% 100%, 15% 100%, 0% 80%, 5% 20%
-  );
-  border-radius: 12px;
-  box-shadow: 0 0 30px rgba(236,72,153,0.8);
+   background: transparent; /* asegura que no se rellene */
 }
 
+/* Glows detrás */
 .eddy-glow-1, .eddy-glow-2 {
   position: absolute;
   top: 50%;
@@ -121,7 +117,7 @@ h1, h2, .services-title {
 .eddy-glow-1 {
   width: 130%;
   height: 130%;
-  background: radial-gradient(circle, rgba(236,72,153,0.6) 0%, rgba(139,92,246,0) 70%);
+  background: radial-gradient(circle, rgba(236,72,153,0.5), transparent 70%);
   filter: blur(25px);
   animation: pulse 2.5s infinite alternate;
 }
@@ -129,7 +125,7 @@ h1, h2, .services-title {
 .eddy-glow-2 {
   width: 150%;
   height: 150%;
-  background: radial-gradient(circle, rgba(59,130,246,0.4) 0%, rgba(139,92,246,0) 70%);
+  background: radial-gradient(circle, rgba(59,130,246,0.4), transparent 70%);
   filter: blur(35px);
   animation: pulse 3s infinite alternate-reverse;
 }
@@ -139,7 +135,6 @@ h1, h2, .services-title {
   50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
   100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
 }
-
 /* ==== Botón Ver Catálogo ==== */
 .catalogo-btn {
   display: inline-block;
